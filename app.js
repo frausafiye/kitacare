@@ -1,5 +1,3 @@
-/** @format */
-
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
@@ -15,7 +13,7 @@ const calendarRoutes = require("./routes/calendarRoutes");
 const app = express();
 
 //middlewares:
-app.use(cors({ credentials: true, origin: process.env.BASE_URL }));
+//app.use(cors({ credentials: true, origin: process.env.BASE_URL }));
 app.use(express.json());
 app.use(cookieParser());
 require("dotenv").config();
@@ -26,15 +24,15 @@ if (config.environment === "development") {
 }
 
 //cors:
-// const setCors = (req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
-//   res.header("Access-Control-Allow-Headers", "Content-Type, Access");
-//   res.header("Access-Control-Allow-Credentials", "true");
-//   res.header("Access-Control-Allow-Methods", "*");
-//   res.header("Access-Control-Expose-Headers", "*");
-//   next();
-// };
-// app.use(setCors);
+const setCors = (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Access");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,PATCH,DELETE");
+  res.header("Access-Control-Expose-Headers", "*");
+  next();
+};
+app.use(setCors);
 
 //endpoints:
 app.use("/users", userRoutes);
@@ -43,9 +41,9 @@ app.use("/child", childRoutes);
 app.use("/groups", groupRoutes);
 app.use("/calendar", calendarRoutes);
 
-app.use(express.static(path.join(__dirname, 'client/build')));
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '/client/build/index.html'))
+app.use(express.static(path.join(__dirname, "client/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/client/build/index.html"));
 });
 
 //connection:

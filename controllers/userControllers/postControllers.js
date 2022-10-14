@@ -1,5 +1,3 @@
-/** @format */
-
 const UserModel = require("../../model/userModel");
 const KgModel = require("../../model/kgModel");
 
@@ -86,6 +84,7 @@ exports.addManager = async (req, res, next) => {
 exports.login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
+    console.log(email, password);
     const user = await UserModel.findOne({ email: email }).populate(
       "group",
       "-__v"
@@ -113,13 +112,14 @@ exports.login = async (req, res, next) => {
           message: "user logged in successfuly",
           user: user,
         });
-    }else{
+    } else {
       res.status(404).send({
-        success:false, message:"email or password is not correct"
-      })
+        success: false,
+        message: "email or password is not correct",
+      });
     }
   } catch (err) {
-    next(err)
+    next(err);
   }
 };
 

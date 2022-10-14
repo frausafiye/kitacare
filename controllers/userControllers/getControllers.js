@@ -1,5 +1,3 @@
-/** @format */
-
 const UserModel = require("../../model/userModel");
 
 //:id of kg!

@@ -1,13 +1,18 @@
-/** @format */
-
 import React, { useEffect, useState, useContext } from "react";
+import { useLocation } from "react-router-dom";
 import ToDosContainer from "./ToDosContainer";
 import ToDonesContainer from "./ToDonesContainer";
-import { MyContext } from "../../Container";
+import { MyContext } from "../../../../Container";
 import "./Todo.scss";
 import axios from "axios";
+import styles from "../../../../pages/Dashboards/ManagerDashboard/ManagerDashboard.module.scss";
+import Tstyles from "../../../../pages/Dashboards/TeacherDashboard/TeacherDashboard.module.scss";
 
 export default function Todo() {
+  const location = useLocation();
+  console.log(location.pathname);
+  let page = location.pathname === "/mpage" ? "mpage" : "tpage";
+
   let [todos, setTodos] = useState([]);
   const { user, reset } = useContext(MyContext);
   let toDos = todos.length ? todos.filter((item) => !item.done) : [];
@@ -107,18 +112,20 @@ export default function Todo() {
   };
 
   return (
-    <div className='app'>
-      <ToDosContainer
-        toDos={toDos}
-        addItem={addItem}
-        updateItem={updateItem}
-        deleteItem={deleteItem}
-      />
-      <ToDonesContainer
-        toDones={toDones}
-        updateItem={updateItem}
-        deleteItem={deleteItem}
-      />
+    <div className={page === "mpage" ? styles.mTodo : Tstyles.tTodo}>
+      <div className="app">
+        <ToDosContainer
+          toDos={toDos}
+          addItem={addItem}
+          updateItem={updateItem}
+          deleteItem={deleteItem}
+        />
+        <ToDonesContainer
+          toDones={toDones}
+          updateItem={updateItem}
+          deleteItem={deleteItem}
+        />
+      </div>
     </div>
   );
 }

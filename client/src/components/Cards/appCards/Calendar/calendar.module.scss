@@ -1,4 +1,4 @@
-@import "../../globalCSS/variables";
+@import "../../../../globalCSS/variables";
 
 /* CALENDAR */
 
@@ -249,7 +249,7 @@
   justify-content: center;
   color: $dark;
   .date {
-    font-size: 0.80rem;
+    font-size: 0.8rem;
     font-weight: 600;
   }
 }

@@ -1,9 +1,7 @@
-/** @format */
-
 import React, { useState, useEffect, useContext } from "react";
 import { MyContext } from "../../Container";
 import axios from "axios";
-import UserCard from "./UserCard";
+import UserCard from "../../components/Cards/UserCard";
 import styles from "./Teachers.module.scss";
 
 export default function Teachers() {
@@ -80,7 +78,7 @@ export default function Teachers() {
   return (
     <div>
       <div className={styles.btn}>
-        <button className='next' onClick={generateCodeHandler}>
+        <button className="next" onClick={generateCodeHandler}>
           Generate Code
         </button>
         {verificationCode && <p>VerificationCode: {verificationCode}</p>}

@@ -9,6 +9,7 @@ if (environment === "production") {
 } else {
   config.secret_key = process.env.SECRET_KEY;
   config.mongo_uri = process.env.MONGO_ATLAS;
+  config.BASE_URL = process.env.BASE_URL;
   config.environment = environment;
   console.log(environment);
 }

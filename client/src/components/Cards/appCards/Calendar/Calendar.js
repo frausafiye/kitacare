@@ -1,6 +1,6 @@
-/** @format */
-
 import React, { useEffect, useState, useContext } from "react";
+import styles from "../../../../pages/Dashboards/ManagerDashboard/ManagerDashboard.module.scss";
+import Tstyles from "../../../../pages/Dashboards/TeacherDashboard/TeacherDashboard.module.scss";
 import {
   format,
   startOfMonth,
@@ -22,7 +22,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CalendarForm from "./CalendarForm";
 import axios from "axios";
 import EventsCalendar from "./EventsCalendar";
-import { MyContext } from "../../Container";
+
+import { useLocation } from "react-router-dom";
+import { MyContext } from "../../../../Container";
 
 export default function Calendar() {
   const left = <FontAwesomeIcon icon={faChevronCircleLeft} />;
@@ -32,6 +34,10 @@ export default function Calendar() {
   const [showForm, setShowForm] = useState(false);
   const [showEvents, setShowEvents] = useState([]);
   const { reset } = useContext(MyContext);
+
+  const location = useLocation();
+  console.log(location.pathname);
+  let page = location.pathname === "/mpage" ? "mpage" : "tpage";
 
   useEffect(() => {
     axios({
@@ -58,17 +64,17 @@ export default function Calendar() {
   const header = () => {
     const dateFormat = "MMMM yyyy";
     return (
-      <div className='header row flex-middle'>
-        <div className='column col-start'>
-          <div className='icon' onClick={prevMonth}>
+      <div className="header row flex-middle">
+        <div className="column col-start">
+          <div className="icon" onClick={prevMonth}>
             {left}
           </div>
         </div>
-        <div className='column col-center'>
-          <p className='month'>{format(currentDate, dateFormat)}</p>
+        <div className="column col-center">
+          <p className="month">{format(currentDate, dateFormat)}</p>
         </div>
-        <div className='column col-end'>
-          <div className='icon' onClick={nextMonth}>
+        <div className="column col-end">
+          <div className="icon" onClick={nextMonth}>
             {right}
           </div>
         </div>
@@ -81,12 +87,12 @@ export default function Calendar() {
     let startDate = startOfWeek(currentDate);
     for (let i = 0; i < 7; i++) {
       days.push(
-        <div className='column col-center' key={i}>
+        <div className="column col-center" key={i}>
           {format(addDays(startDate, i), dateFormat)}
         </div>
       );
     }
-    return <div className='days row'>{days}</div>;
+    return <div className="days row">{days}</div>;
   };
   const cells = () => {
     const monthStart = startOfMonth(currentDate);
@@ -118,21 +124,22 @@ export default function Calendar() {
                 : ""
             }`}
             key={day}
-            onClick={() => onDateClick(toDate(cloneDay))}>
-            <span className='number'>{formattedDate}</span>
-            <span className='bg'>{formattedDate}</span>
+            onClick={() => onDateClick(toDate(cloneDay))}
+          >
+            <span className="number">{formattedDate}</span>
+            <span className="bg">{formattedDate}</span>
           </div>
         );
         day = addDays(day, 1);
       }
       rows.push(
-        <div className='row' key={day}>
+        <div className="row" key={day}>
           {days}
         </div>
       );
       days = [];
     }
-    return <div className='body'>{rows}</div>;
+    return <div className="body">{rows}</div>;
   };
 
   const nextMonth = () => {
@@ -146,18 +153,20 @@ export default function Calendar() {
   };
 
   return (
-    <div className='calendar'>
-      {showForm && (
-        <div>
-          <CalendarForm />
-        </div>
-      )}
-      <>
-        <div>{header()}</div>
-        <div>{days()}</div>
-        <div onClick={() => setShowForm(!showForm)}>{cells()}</div>
-      </>
-      <EventsCalendar />
+    <div className={page === "mpage" ? styles.calendar : Tstyles.calendar}>
+      <div className="calendar">
+        {showForm && (
+          <div>
+            <CalendarForm />
+          </div>
+        )}
+        <>
+          <div>{header()}</div>
+          <div>{days()}</div>
+          <div onClick={() => setShowForm(!showForm)}>{cells()}</div>
+        </>
+        <EventsCalendar />
+      </div>
     </div>
   );
 }
