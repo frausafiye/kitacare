@@ -9,7 +9,6 @@ export default function UserInfoSidebar(props) {
   const { user } = useContext(MyContext);
   const location = useLocation();
   const history = useHistory();
-  console.log(location.pathname);
   let page = location.pathname === "/mpage" ? "mpage" : "tpage";
 
   const handleEdit = () => {

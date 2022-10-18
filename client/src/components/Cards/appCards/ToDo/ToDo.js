@@ -4,13 +4,12 @@ import ToDosContainer from "./ToDosContainer";
 import ToDonesContainer from "./ToDonesContainer";
 import { MyContext } from "../../../../Container";
 import "./Todo.scss";
-import axios from "axios";
 import styles from "../../../../pages/Dashboards/ManagerDashboard/ManagerDashboard.module.scss";
 import Tstyles from "../../../../pages/Dashboards/TeacherDashboard/TeacherDashboard.module.scss";
+import axios from "axios";
 
 export default function Todo() {
   const location = useLocation();
-  console.log(location.pathname);
   let page = location.pathname === "/mpage" ? "mpage" : "tpage";
 
   let [todos, setTodos] = useState([]);
@@ -18,97 +17,56 @@ export default function Todo() {
   let toDos = todos.length ? todos.filter((item) => !item.done) : [];
   let toDones = todos.length ? todos.filter((item) => item.done) : [];
 
+  const serviceHandler = async (serviceType, payload) => {
+    let method, url;
+    if (serviceType === "getData") {
+      method = "GET";
+      url = "getTodos";
+    } else if (serviceType === "addData") {
+      method = "POST";
+      url = "addTodo";
+    } else if (serviceType === "updateData") {
+      method = "PUT";
+      url = "updateTodo";
+    } else if (serviceType === "deleteData") {
+      method = "DELETE";
+      url = "deleteTodo";
+    }
+    try {
+      let result = await axios({
+        method: method,
+        url: `${process.env.REACT_APP_BASE_URL}/users/${url}/${user._id}`,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        withCredentials: true,
+        data: payload,
+      });
+      if (result.data.success) {
+        if (method === "GET") setTodos(result.data.todos);
+        else setTodos(result.data.updatedTodos);
+      } else console.log(result);
+    } catch (err) {
+      err.response.status == 401 ? reset() : console.log(err);
+    }
+  };
+
   useEffect(() => {
     //onload get todos from database:
-    axios({
-      method: "GET",
-      url: `${process.env.REACT_APP_BASE_URL}/users/getTodos/${user._id}`,
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      withCredentials: true,
-    })
-      .then((result) => {
-        if (result.data.success) {
-          setTodos(result.data.todos);
-        } else {
-          console.log(result);
-        }
-      })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+    serviceHandler("getData");
   }, []);
 
   let addItem = (value) => {
-    let item = { text: value, done: false };
-    axios({
-      method: "POST",
-      url: `${process.env.REACT_APP_BASE_URL}/users/addTodo/${user._id}`,
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      withCredentials: true,
-      data: item,
-    })
-      .then((result) => {
-        if (result.data.success) {
-          setTodos(result.data.updatedTodos);
-        } else {
-          console.log(result);
-        }
-      })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+    serviceHandler("addData", { text: value, done: false });
   };
 
   let updateItem = (value) => {
-    axios({
-      method: "PUT",
-      url: `${process.env.REACT_APP_BASE_URL}/users/updateTodo/${user._id}`,
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      withCredentials: true,
-      data: { value: value },
-    })
-      .then((result) => {
-        if (result.data.success) {
-          setTodos(result.data.updatedTodos);
-        } else {
-          console.log(result);
-        }
-      })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+    serviceHandler("updateData", { value: value });
   };
 
   let deleteItem = (value) => {
-    axios({
-      method: "DELETE",
-      url: `${process.env.REACT_APP_BASE_URL}/users/deleteTodo/${user._id}`,
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      withCredentials: true,
-      data: { value: value },
-    })
-      .then((result) => {
-        if (result.data.success) {
-          setTodos(result.data.updatedTodos);
-        } else {
-          console.log(result);
-        }
-      })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+    serviceHandler("deleteData", { value: value });
   };
 
   return (

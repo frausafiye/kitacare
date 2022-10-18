@@ -36,7 +36,6 @@ export default function Calendar() {
   const { reset } = useContext(MyContext);
 
   const location = useLocation();
-  console.log(location.pathname);
   let page = location.pathname === "/mpage" ? "mpage" : "tpage";
 
   useEffect(() => {
