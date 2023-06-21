@@ -6,7 +6,7 @@ import styles from "../../pages/Dashboards/ManagerDashboard/ManagerDashboard.mod
 
 export default function ChildrenCard() {
   const [children, setChildren] = useState([]);
-  const { kg, user, reset } = useContext(MyContext);
+  const { user, authCheckHandler } = useContext(MyContext);
   const getAllChildren = () => {
     axios({
       method: "GET",
@@ -24,9 +24,9 @@ export default function ChildrenCard() {
           console.log(response);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => {
+        authCheckHandler(err);
+      });
   };
   useEffect(() => {
     getAllChildren();

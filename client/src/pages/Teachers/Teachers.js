@@ -5,7 +5,7 @@ import UserCard from "../../components/Cards/UserCard";
 import styles from "./Teachers.module.scss";
 
 export default function Teachers() {
-  const { kg, reset } = useContext(MyContext);
+  const { kg, authCheckHandler } = useContext(MyContext);
   const [teachers, setTeachers] = useState([]);
   const [managers, setManagers] = useState([]);
   const [verificationCode, setVerificationCode] = useState("");
@@ -28,9 +28,7 @@ export default function Teachers() {
           console.log(response);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
 
     axios({
       method: "GET",
@@ -48,9 +46,7 @@ export default function Teachers() {
           console.log(response);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   }, []);
 
   const generateCodeHandler = () => {
@@ -70,9 +66,7 @@ export default function Teachers() {
           console.log(response);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   };
 
   return (

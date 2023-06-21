@@ -6,7 +6,7 @@ import styles from "../../pages/Dashboards/ManagerDashboard/ManagerDashboard.mod
 
 export default function GroupsCard() {
   const [groups, setGroups] = useState([]);
-  const { kg, user, reset } = useContext(MyContext);
+  const { kg, user, authCheckHandler } = useContext(MyContext);
 
   const getAllGroups = () => {
     axios({
@@ -25,9 +25,7 @@ export default function GroupsCard() {
           console.log(result);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   };
   useEffect(() => {
     getAllGroups();

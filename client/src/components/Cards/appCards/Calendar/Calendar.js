@@ -33,7 +33,7 @@ export default function Calendar() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [showForm, setShowForm] = useState(false);
   const [showEvents, setShowEvents] = useState([]);
-  const { reset } = useContext(MyContext);
+  const { authCheckHandler } = useContext(MyContext);
 
   const location = useLocation();
   let page = location.pathname === "/mpage" ? "mpage" : "tpage";
@@ -55,9 +55,7 @@ export default function Calendar() {
           console.log(result.data.getAllEvents);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   }, []);
 
   const header = () => {

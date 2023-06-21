@@ -1,6 +1,6 @@
 import { useState, useEffect, createContext } from "react";
-import { useHistory } from "react-router-dom";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 const MyContext = createContext("");
 export { MyContext };
 
@@ -12,11 +12,15 @@ export default function Container(props) {
   const [kg, setKg] = useState(JSON.parse(localStorage.getItem("kg")) || null);
   const [isLogin, setIsLogin] = useState(Boolean(user));
 
-  const reset = () => {
-    //delete local storage:
+  const reset = async () => {
     localStorage.removeItem("kg");
     localStorage.removeItem("user");
+    await setIsLogin(false);
+    await history.push("/login");
     setUser(null);
+  };
+  const authCheckHandler = (err) => {
+    err.response.status === 401 ? reset() : console.log(err);
   };
 
   useEffect(() => {
@@ -38,9 +42,7 @@ export default function Container(props) {
             console.log(response);
           }
         })
-        .catch((err) =>
-          err.response.status == 401 ? reset() : console.log(err)
-        );
+        .catch((err) => authCheckHandler(err));
     } else {
       setIsLogin(false);
     }
@@ -55,7 +57,7 @@ export default function Container(props) {
         setIsLogin,
         kg,
         setKg,
-        reset,
+        authCheckHandler,
       }}
     >
       {props.children}

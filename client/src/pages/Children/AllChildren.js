@@ -8,7 +8,7 @@ import Child from "./Child";
 
 export default function AllChildren(props) {
   const [children, setChildren] = useState([]);
-  const { user, setUser, reset } = useContext(MyContext);
+  const { user, setUser, authCheckHandler } = useContext(MyContext);
 
   useEffect(() => {
     let url;
@@ -39,9 +39,7 @@ export default function AllChildren(props) {
           console.log(result);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   }, []);
 
   const handleEdit = (child) => {

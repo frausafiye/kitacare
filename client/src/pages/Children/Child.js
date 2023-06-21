@@ -6,7 +6,7 @@ import ChildInfo from "./ChildInfo";
 import ChildGroupEdit from "./ChildGroupEdit";
 
 export default function Child(props) {
-  const { user, reset } = useContext(MyContext);
+  const { user, authCheckHandler } = useContext(MyContext);
   const [groups, setGroups] = useState([]);
   const child = props.child;
 
@@ -27,9 +27,7 @@ export default function Child(props) {
           console.log(result);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   };
 
   const handleEditGroup = () => {

@@ -6,7 +6,7 @@ import { MyContext } from "../../Container";
 import { submitForm } from "../../logic/registerLogic";
 
 export default function EditProfile(props) {
-  const { setUser, user, reset } = useContext(MyContext);
+  const { setUser, user, authCheckHandler } = useContext(MyContext);
   const [nextUser, setNextUser] = useState(user);
   const [showSuccess, setShowSuccess] = useState(false);
   const [showPasswordForm, setShowPasswordForm] = useState(false);
@@ -51,9 +51,7 @@ export default function EditProfile(props) {
           console.log(result); //work on error cases!!!!!
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   };
 
   const editHandler = (e) => {
@@ -74,9 +72,7 @@ export default function EditProfile(props) {
           console.log(result); //prepare an error box!
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   };
 
   return (

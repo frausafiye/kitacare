@@ -5,7 +5,7 @@ import { MyContext } from "../../Container";
 import styles from "../../pages/Dashboards/ManagerDashboard/ManagerDashboard.module.scss";
 export default function TeachersCard() {
   const [teachers, setTeachers] = useState([]);
-  const { kg, user, reset } = useContext(MyContext);
+  const { kg, user, authCheckHandler } = useContext(MyContext);
   const getAllTeachers = () => {
     axios({
       method: "GET",
@@ -23,9 +23,7 @@ export default function TeachersCard() {
           console.log(response);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   };
 
   useEffect(() => {

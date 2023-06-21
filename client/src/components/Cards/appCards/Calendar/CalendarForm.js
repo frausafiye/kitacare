@@ -3,7 +3,7 @@ import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { MyContext } from "../../../../Container";
 export default function CalendarForm(props) {
-  const { reset } = useContext(MyContext);
+  const { authCheckHandler } = useContext(MyContext);
   const [data, setData] = useState({
     startDate: "",
     endDate: "",
@@ -45,9 +45,7 @@ export default function CalendarForm(props) {
           console.log(response);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   };
 
   const grabValue = (e) => {

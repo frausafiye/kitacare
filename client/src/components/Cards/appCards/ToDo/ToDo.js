@@ -13,7 +13,7 @@ export default function Todo() {
   let page = location.pathname === "/mpage" ? "mpage" : "tpage";
 
   let [todos, setTodos] = useState([]);
-  const { user, reset } = useContext(MyContext);
+  const { user, authCheckHandler } = useContext(MyContext);
   let toDos = todos.length ? todos.filter((item) => !item.done) : [];
   let toDones = todos.length ? todos.filter((item) => item.done) : [];
 
@@ -48,7 +48,7 @@ export default function Todo() {
         else setTodos(result.data.updatedTodos);
       } else console.log(result);
     } catch (err) {
-      err.response.status == 401 ? reset() : console.log(err);
+      authCheckHandler(err);
     }
   };
 

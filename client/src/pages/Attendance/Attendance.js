@@ -8,7 +8,7 @@ import NotHere from "./NotHere";
 import { MyContext } from "../../Container";
 
 export default function Attendance() {
-  const { user, reset } = useContext(MyContext);
+  const { user, authCheckHandler } = useContext(MyContext);
   // [{child:..., attendanceStatus: "here/notHere", date: ""}]
   const [here, setHere] = useState();
   const [notHere, setNotHere] = useState();
@@ -38,9 +38,7 @@ export default function Attendance() {
           console.log(result);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   }, []);
 
   const handleAttendance = (e, childId) => {
@@ -82,9 +80,7 @@ export default function Attendance() {
           console.log(result);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   };
 
   return (

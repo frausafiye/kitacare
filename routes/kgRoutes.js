@@ -20,7 +20,7 @@ router.get("/kgs", auth, getKgs);
 router.get("/getVerificationCode/:id", auth, getVerificationCode);
 
 //POST:
-router.post("/register", auth, addKgManager);
+router.post("/register", addKgManager);
 
 //PUT:
 router.put("/updateKg/:id", auth, updateKg);

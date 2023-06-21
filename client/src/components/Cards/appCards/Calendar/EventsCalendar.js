@@ -12,7 +12,7 @@ export default function EventsCalendar() {
   const [showEvents, setShowEvents] = useState([]);
   const dateFormat = "dd/MM";
   const history = useHistory();
-  const { reset } = useContext(MyContext);
+  const { authCheckHandler } = useContext(MyContext);
 
   useEffect(() => {
     axios({
@@ -31,9 +31,7 @@ export default function EventsCalendar() {
           console.log(result.data.getAllEvents);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   }, []);
 
   const handleDelete = (id) => {
@@ -53,9 +51,7 @@ export default function EventsCalendar() {
           console.log(result);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   };
 
   return (

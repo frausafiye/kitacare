@@ -1,5 +1,3 @@
-/** @format */
-
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.scss";
@@ -7,7 +5,8 @@ import axios from "axios";
 import { MyContext } from "../../Container";
 
 export default function Login(props) {
-  const { setIsLogin, setUser, user, reset } = useContext(MyContext);
+  const { isLogin, setIsLogin, setUser, user, authCheckHandler } =
+    useContext(MyContext);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -15,18 +14,12 @@ export default function Login(props) {
   });
 
   useEffect(() => {
-    if (props.location.state) {
-      setFormData({
-        email: props.location.state.email,
-        password: props.location.state.password,
-      });
-    }
-    if (user && user.role) {
+    if (isLogin && user) {
       user.role === "Manager"
         ? props.history.push({ pathname: "/mpage" })
         : props.history.push({ pathname: "/tpage" });
     }
-  }, [user]);
+  }, [isLogin]);
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -51,8 +44,7 @@ export default function Login(props) {
         }
       })
       .catch((err) => {
-        console.log(err); //undefined???
-        err.response.status == 401 ? reset() : console.log(err);
+        authCheckHandler(err);
       });
   };
 

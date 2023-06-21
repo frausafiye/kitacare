@@ -5,7 +5,7 @@ import styles from "./ChildEdit/ChildEdit.module.scss";
 import { MyContext } from "../../Container";
 
 export default function ChildEdit(props) {
-  const { reset } = useContext(MyContext);
+  const { authCheckHandler } = useContext(MyContext);
   const [editedChild, setEditedChild] = useState([]);
   const child = props.location.state.child;
   const history = useHistory();
@@ -29,9 +29,7 @@ export default function ChildEdit(props) {
           alert("Child hasn't been deleted successfully");
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   };
 
   const handleEdit = (e) => {
@@ -57,9 +55,7 @@ export default function ChildEdit(props) {
           alert("Child hasn't been edited successfully");
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   };
 
   const editedValue = (e) => {

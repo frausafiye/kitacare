@@ -7,7 +7,7 @@ import styles from "./groups.module.scss";
 import { MyContext } from "../../Container";
 
 export default function AddGroup(props) {
-  const { user, reset } = useContext(MyContext);
+  const { user, authCheckHandler } = useContext(MyContext);
   const [data, setData] = useState({});
   const [message, setMessage] = useState({
     submitting: false,
@@ -47,9 +47,7 @@ export default function AddGroup(props) {
           console.log(response);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   };
 
   const grabValue = (e) => {
@@ -67,9 +65,9 @@ export default function AddGroup(props) {
             <label>Group Name</label>
             <br />
             <input
-              type='text'
-              name='groupName'
-              placeholder='groupName'
+              type="text"
+              name="groupName"
+              placeholder="groupName"
               onChange={grabValue}
             />
           </div>
@@ -77,19 +75,19 @@ export default function AddGroup(props) {
             <label>Room</label>
             <br />
             <input
-              type='text'
-              name='room'
-              placeholder='room'
+              type="text"
+              name="room"
+              placeholder="room"
               onChange={grabValue}
             />
           </div>
           <div className={styles.addinfo}>
-            <label className='details'>Age Group</label>
+            <label className="details">Age Group</label>
             <br />
             <input
-              type='text'
-              name='ageGroup'
-              placeholder='ex: children between 1 and 2 years old'
+              type="text"
+              name="ageGroup"
+              placeholder="ex: children between 1 and 2 years old"
               onChange={grabValue}
             />
           </div>
@@ -97,26 +95,27 @@ export default function AddGroup(props) {
             <label>Description</label>
             <br />
             <input
-              type='text'
-              name='description'
-              placeholder='group description'
+              type="text"
+              name="description"
+              placeholder="group description"
               onChange={grabValue}
             />
           </div>
         </div>
         <div className={styles.btn}>
-          <Link to='/groups'>
-            <button type='submit' value='Cancel' className='cancel'>
+          <Link to="/groups">
+            <button type="submit" value="Cancel" className="cancel">
               Cancel
             </button>
           </Link>
-          <button type='submit' value='Submit' className='submit'>
+          <button type="submit" value="Submit" className="submit">
             Submit
           </button>
           {message.status && (
             <p
               className={!message.status.ok ? "errorMsg" : ""}
-              style={{ fontSize: "0.65rem" }}>
+              style={{ fontSize: "0.65rem" }}
+            >
               {message.status.msg}
             </p>
           )}

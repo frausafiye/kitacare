@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 export default function AllGroups(props) {
   const [groups, setGroups] = useState([]);
-  const { user, reset } = useContext(MyContext);
+  const { user, authCheckHandler } = useContext(MyContext);
 
   useEffect(() => {
     axios({
@@ -27,9 +27,7 @@ export default function AllGroups(props) {
           console.log(result.data.allGroups);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   }, []);
 
   const handleEdit = (group) => {
@@ -72,17 +70,19 @@ export default function AllGroups(props) {
               </div>
               <div>
                 <button
-                  type='submit'
-                  value='edit'
-                  className='fixedit'
-                  onClick={() => handleEdit(group)}>
+                  type="submit"
+                  value="edit"
+                  className="fixedit"
+                  onClick={() => handleEdit(group)}
+                >
                   Edit
                 </button>
                 <button
-                  type='submit'
-                  value='view'
-                  className='view'
-                  onClick={() => viewChildrenHandler(group._id)}>
+                  type="submit"
+                  value="view"
+                  className="view"
+                  onClick={() => viewChildrenHandler(group._id)}
+                >
                   view children
                 </button>
               </div>

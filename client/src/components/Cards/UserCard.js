@@ -16,7 +16,7 @@ export default function UserCard(props) {
   const [showRoles, setShowRoles] = useState(false);
   const [selectedGroup, setSelectedGroup] = useState(null);
   const [selectedRole, setSelectedRole] = useState(null);
-  const { kg, reset } = useContext(MyContext);
+  const { kg, authCheckHandler } = useContext(MyContext);
 
   const getAllGroups = () => {
     axios({
@@ -35,9 +35,7 @@ export default function UserCard(props) {
           console.log(result.data);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   };
 
   const changeGroup = (id) => {
@@ -74,9 +72,7 @@ export default function UserCard(props) {
           console.log(result.data);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   };
 
   const changeRole = (id) => {
@@ -98,9 +94,7 @@ export default function UserCard(props) {
           console.log(result.data);
         }
       })
-      .catch((err) =>
-        err.response.status == 401 ? reset() : console.log(err)
-      );
+      .catch((err) => authCheckHandler(err));
   };
 
   return (

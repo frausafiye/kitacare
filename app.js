@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const path = require("path");
+const multer = require("multer");
 //routes:
 const userRoutes = require("./routes/userRoutes");
 const kgRoutes = require("./routes/kgRoutes");
