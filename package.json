@@ -1,11 +1,11 @@
 {
   "name": "kitacare",
   "version": "1.0.0",
-  "description": "DCI final project | In progress | Presentation date: 22 April 2021",
+  "description": "Kindergarden Management Tool ",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"npm run server\" \"cd client && npm start\"",
+    "start": "npm run server",
     "server": "node app.js",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
