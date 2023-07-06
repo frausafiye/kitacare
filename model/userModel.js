@@ -3,6 +3,7 @@
 const mongoose = require("mongoose");
 const { Schema } = require("mongoose");
 const AddressSchema = require("./addressSchema");
+const ImageSchema = require("./imageSchema");
 //hashing password and comparing passwords
 const { encrypt, compare } = require("../lib/encryption");
 //signing token and verifying token
@@ -24,8 +25,9 @@ const UserSchema = new Schema({
     type: Schema.Types.ObjectId,
     required: false,
   },
-  birthday: { type: Date, required:false },
+  birthday: { type: Date, required: false },
   img: { type: String, required: false },
+  //img: { ref: "images", type: Schema.Types.ObjectId, required: false },
   role: {
     type: String,
     enum: ["Manager", "Teacher"],

@@ -20,7 +20,7 @@ export default function Container(props) {
     setUser(null);
   };
   const authCheckHandler = (err) => {
-    err.response.status === 401 ? reset() : console.log(err);
+    err.response && err.response.status === 401 ? reset() : console.log(err);
   };
 
   useEffect(() => {

@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const { auth } = require("../middlewares/authentication");
-const uploadImg = require("../middlewares/uploadImg");
 
 const {
   getManagers,
@@ -15,7 +14,6 @@ const {
   addTeacher,
   login,
   addTodo,
-  uploadImage,
 } = require("../controllers/userControllers/postControllers");
 const {
   deleteManager,
@@ -45,8 +43,6 @@ router.post("/manager", auth, addManager);
 router.post("/teacher", auth, addTeacher);
 router.post("/login", login);
 router.post("/addTodo/:id", auth, addTodo);
-//router.post("/uploadImage/:id", uploadImg.single("file"), uploadImage);
-router.post("/uploadImage", auth, uploadImg.single("file"), uploadImage);
 
 //PUT:
 router.put("/users/:id", auth, updateUser);

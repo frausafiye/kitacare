@@ -13,7 +13,7 @@ const storage = new GridFsStorage({
     }
 
     return {
-      bucketName: "profile-photos",
+      bucketName: "images",
       filename: `${Date.now()}-profile-${file.originalname}`,
     };
   },

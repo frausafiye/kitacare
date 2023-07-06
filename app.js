@@ -11,6 +11,7 @@ const kgRoutes = require("./routes/kgRoutes");
 const childRoutes = require("./routes/childRoutes");
 const groupRoutes = require("./routes/groupRoutes");
 const calendarRoutes = require("./routes/calendarRoutes");
+const imageRoutes = require("./routes/imageRoutes");
 const app = express();
 
 //middlewares:
@@ -41,6 +42,7 @@ app.use("/kg", kgRoutes);
 app.use("/child", childRoutes);
 app.use("/groups", groupRoutes);
 app.use("/calendar", calendarRoutes);
+app.use("/profile", imageRoutes);
 
 app.use(express.static(path.join(__dirname, "client/build")));
 app.get("*", (req, res) => {

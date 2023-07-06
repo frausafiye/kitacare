@@ -1,5 +1,3 @@
-/** @format */
-
 const express = require("express");
 const router = express.Router();
 const { auth } = require("../middlewares/authentication");
@@ -23,5 +21,4 @@ router.post("/postNewEvent", auth, postNewEvent);
 router.put("/putUpdateEvent", auth, putUpdateEvent);
 router.delete("/deleteSingleEvent/:id", auth, deleteSingleEvent);
 
-/* DEFAULT EXPORT */
 module.exports = router;

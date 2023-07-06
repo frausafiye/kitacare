@@ -152,25 +152,3 @@ exports.addTodo = async (req, res, next) => {
     next(err);
   }
 };
-
-exports.uploadImage = async (req, res, next) => {
-  try {
-    const user = await UserModel.findById(req.userID);
-    if (user) {
-      if (req.file === undefined)
-        return res
-          .status(400)
-          .send({ success: false, message: "you must select a file." });
-      //const imgUrl = `http://localhost:8080/file/${req.file.filename}`;
-      const imgUrl = req.file.filename;
-      return res.send({ success: true, imgUrl });
-    } else {
-      res
-        .status(404)
-        .send({ successs: false, message: "no matching user found" });
-    }
-  } catch (err) {
-    console.log(err);
-    next(err);
-  }
-};
