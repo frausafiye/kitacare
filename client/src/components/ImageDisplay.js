@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-const ImageDisplay = ({ imageData }) => {
+import Mstyles from "../pages/Dashboards/ManagerDashboard/ManagerDashboard.module.scss";
+import Tstyles from "../pages/Dashboards/ManagerDashboard/ManagerDashboard.module.scss";
+const ImageDisplay = (props) => {
   const [validImages, setValidImages] = useState([]);
   //   const [invalidImages, setInvalidImages] = useState([]);
 
@@ -18,7 +20,7 @@ const ImageDisplay = ({ imageData }) => {
       const valid = [];
       const invalid = [];
 
-      for (const image of imageData) {
+      for (const image of props.imageData) {
         try {
           await checkImageValidity(image);
           valid.push(image);
@@ -32,10 +34,10 @@ const ImageDisplay = ({ imageData }) => {
     };
 
     validateImages();
-  }, [imageData]);
+  }, [props.imageData]);
 
   return (
-    <div>
+    <div className={props.page === "mpage" ? Mstyles.mImg : Tstyles.tImg}>
       {validImages.map((image, index) => (
         <img
           key={index}

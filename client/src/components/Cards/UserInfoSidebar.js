@@ -3,7 +3,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import Mstyles from "../../pages/Dashboards/ManagerDashboard/ManagerDashboard.module.scss";
 import Tstyles from "../../pages/Dashboards/TeacherDashboard/TeacherDashboard.module.scss";
 import { MyContext } from "../../Container";
-import UserImage from "./UserImage";
+import UserImage from "../UserImage";
 
 export default function UserInfoSidebar(props) {
   const { user } = useContext(MyContext);
