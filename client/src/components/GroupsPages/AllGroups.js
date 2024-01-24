@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { MyContext } from "../../Container";
@@ -72,17 +70,19 @@ export default function AllGroups(props) {
               </div>
               <div>
                 <button
-                  type='submit'
-                  value='edit'
-                  className='fixedit'
-                  onClick={() => handleEdit(group)}>
+                  type="submit"
+                  value="edit"
+                  className="fixedit"
+                  onClick={() => handleEdit(group)}
+                >
                   Edit
                 </button>
                 <button
-                  type='submit'
-                  value='view'
-                  className='view'
-                  onClick={() => viewChildrenHandler(group._id)}>
+                  type="submit"
+                  value="view"
+                  className="view"
+                  onClick={() => viewChildrenHandler(group._id)}
+                >
                   view children
                 </button>
               </div>

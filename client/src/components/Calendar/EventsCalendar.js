@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
@@ -10,7 +8,7 @@ import { faBackspace } from "@fortawesome/free-solid-svg-icons";
 import { MyContext } from "../../Container";
 
 export default function EventsCalendar() {
-  const backspace = <FontAwesomeIcon icon={faBackspace} size='2x' />;
+  const backspace = <FontAwesomeIcon icon={faBackspace} size="2x" />;
   const [showEvents, setShowEvents] = useState([]);
   const dateFormat = "dd/MM";
   const history = useHistory();
@@ -39,11 +37,14 @@ export default function EventsCalendar() {
   }, []);
 
   const handleDelete = (id) => {
-    axios(`${process.env.REACT_APP_BASE_URL}/calendar/deleteSingleEvent/${id}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-    })
+    axios(
+      `${process.env.REACT_APP_BASE_URL}/calendar/deleteSingleEvent/${id}`,
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      }
+    )
       .then((result) => {
         if (result.data.success) {
           console.log(result.data);
@@ -71,10 +72,11 @@ export default function EventsCalendar() {
               : {event.name}
             </p>
             <button
-              type='submit'
-              value='delete'
+              type="submit"
+              value="delete"
               className={styles.delete}
-              onClick={() => handleDelete(event._id)}>
+              onClick={() => handleDelete(event._id)}
+            >
               {backspace}
             </button>
           </div>

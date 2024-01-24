@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState } from "react";
 import SingleGroupEdit from "./SingleGroupEdit";
 import styles from "./groups.module.scss";
@@ -44,9 +42,9 @@ export default function SingleGroup(props) {
             <div className={styles.col}>
               <p className={styles.info}>Group size:</p>
               <p className={styles.info}>{group.children.length}</p>
-              <Link to='/children'>
+              <Link to="/children">
                 {" "}
-                <button type='submit' value='view' className='view'>
+                <button type="submit" value="view" className="view">
                   view children
                 </button>
               </Link>
@@ -56,17 +54,18 @@ export default function SingleGroup(props) {
               <p className={styles.info}>{group.ageGroup}</p>
             </div>
             <button
-              type='submit'
-              value='edit'
-              className='edit'
-              onClick={() => handleEdit(group)}>
+              type="submit"
+              value="edit"
+              className="edit"
+              onClick={() => handleEdit(group)}
+            >
               Edit
             </button>
           </div>
         </>
       </div>
-      <Link to='/groups'>
-        <button type='submit' value='back' className='back'>
+      <Link to="/groups">
+        <button type="submit" value="back" className="back">
           Go Back
         </button>
       </Link>

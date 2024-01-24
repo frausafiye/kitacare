@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState, useEffect, useContext } from "react";
 import styles from "./Mpage.module.scss";
 import { Link } from "react-router-dom";
@@ -93,8 +91,8 @@ export default function Mpage(props) {
         <div className={styles.mInfo}>
           <div className={styles.mImg}>
             <img
-              src='http://www.sardiniauniqueproperties.com/wp-content/uploads/2015/10/Square-Profile-Pic-1.jpg'
-              alt='manager'
+              src="http://www.sardiniauniqueproperties.com/wp-content/uploads/2015/10/Square-Profile-Pic-1.jpg"
+              alt="manager"
             />
           </div>
           <div>
@@ -103,11 +101,12 @@ export default function Mpage(props) {
             </p>
             <p>{user.email}</p>
             <button
-              type='submit'
-              value='edit'
-              className='edit'
+              type="submit"
+              value="edit"
+              className="edit"
               onClick={() => handleEdit()}
-              className='edit'>
+              className="edit"
+            >
               Edit Info
             </button>
           </div>
@@ -119,13 +118,13 @@ export default function Mpage(props) {
             <p>Find all the groups information:</p>
             <p>how many children per group, ages, weekely plans and more!</p>
             <p>Total: {groups.length}</p>
-            <Link to='/addgroup'>
-              <button type='submit' value='add' className='add'>
+            <Link to="/addgroup">
+              <button type="submit" value="add" className="add">
                 Add
               </button>
             </Link>
-            <Link to='/groups'>
-              <button type='submit' value='view' className='view'>
+            <Link to="/groups">
+              <button type="submit" value="view" className="view">
                 View
               </button>
             </Link>
@@ -138,8 +137,8 @@ export default function Mpage(props) {
               necessary information!
             </p>
             <p>Total: {teachers.length}</p>
-            <Link to='/teachers'>
-              <button type='submit' value='view' className='view'>
+            <Link to="/teachers">
+              <button type="submit" value="view" className="view">
                 View
               </button>
             </Link>
@@ -152,13 +151,13 @@ export default function Mpage(props) {
               necessary information!
             </p>
             <p>Total: {children.length}</p>
-            <Link to='/cregister'>
-              <button type='submit' value='add' className='add'>
+            <Link to="/cregister">
+              <button type="submit" value="add" className="add">
                 Add
               </button>
             </Link>
-            <Link to='/children'>
-              <button type='submit' value='view' className='view'>
+            <Link to="/children">
+              <button type="submit" value="view" className="view">
                 View
               </button>
             </Link>

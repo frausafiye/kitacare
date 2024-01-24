@@ -1,4 +1,3 @@
-/** @format */
 import styles from "./Attendance.module.scss";
 import React from "react";
 
@@ -19,13 +18,13 @@ export default function Here({ hereChildren, handleAttendance }) {
                 <form onSubmit={(e) => handleAttendance(e, child.child._id)}>
                   <label>
                     <input
-                      type='checkbox'
-                      name='attendanceStatus'
-                      value='notHere'
+                      type="checkbox"
+                      name="attendanceStatus"
+                      value="notHere"
                     />{" "}
                     Not Here
                   </label>
-                  <button type='submit'> Submit</button>
+                  <button type="submit"> Submit</button>
                 </form>
               </div>
             </div>

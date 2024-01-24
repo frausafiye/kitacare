@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState, useEffect, useContext } from "react";
 import styles from "./Attendance.module.scss";
 
@@ -54,12 +52,15 @@ export default function Attendance() {
       obj[pair[0]] = pair[1];
     }
 
-    axios(`${process.env.REACT_APP_BASE_URL}/child/updateAttendance/${childId}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-      data: obj,
-    })
+    axios(
+      `${process.env.REACT_APP_BASE_URL}/child/updateAttendance/${childId}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+        data: obj,
+      }
+    )
       .then((result) => {
         if (result.data.success) {
           //setAttendance for this child:

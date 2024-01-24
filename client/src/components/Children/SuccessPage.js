@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import styles from "./success.module.scss";

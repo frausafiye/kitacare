@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import styles from "./children.module.scss";

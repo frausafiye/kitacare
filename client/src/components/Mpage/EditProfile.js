@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
@@ -34,15 +32,18 @@ export default function EditProfile(props) {
   const changePasswordHandler = (e) => {
     e.preventDefault();
     let formObj = submitForm(e);
-    axios(`${process.env.REACT_APP_BASE_URL}/users/updatePassword/${user._id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-      data: {
-        currentPassword: formObj.currentPassword,
-        newPassword: formObj.newPassword,
-      },
-    })
+    axios(
+      `${process.env.REACT_APP_BASE_URL}/users/updatePassword/${user._id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+        data: {
+          currentPassword: formObj.currentPassword,
+          newPassword: formObj.newPassword,
+        },
+      }
+    )
       .then((result) => {
         if (result.data.success) {
           setShowSuccess(true);
@@ -91,34 +92,36 @@ export default function EditProfile(props) {
           <form
             className={styles.formContainer}
             onSubmit={(e) => changePasswordHandler(e)}
-            name='managerForm'>
+            name="managerForm"
+          >
             <div>
               <div>
-                <label className='details'>Your current password: </label>
+                <label className="details">Your current password: </label>
                 <br />
                 <input
-                  type='password'
-                  name='currentPassword'
-                  placeholder='current password'
+                  type="password"
+                  name="currentPassword"
+                  placeholder="current password"
                 />
               </div>
               <div>
-                <label className='details'>Your new password: </label>
+                <label className="details">Your new password: </label>
                 <br />
                 <input
-                  type='password'
-                  name='newPassword'
-                  placeholder='new password'
+                  type="password"
+                  name="newPassword"
+                  placeholder="new password"
                 />
               </div>
               <br />
               <div className={styles.btnContainer}>
                 <button
-                  className='cancel'
-                  onClick={() => setShowPasswordForm(false)}>
+                  className="cancel"
+                  onClick={() => setShowPasswordForm(false)}
+                >
                   Cancel
                 </button>
-                <button type='submit' value='Register' className='att'>
+                <button type="submit" value="Register" className="att">
                   Submit
                 </button>
               </div>
@@ -131,56 +134,57 @@ export default function EditProfile(props) {
         <form
           className={styles.formContainer}
           onSubmit={(e) => editHandler(e)}
-          name='managerForm'>
+          name="managerForm"
+        >
           <div className={styles.regBox}>
             <div>
               <div>
-                <label className='details'>First name</label>
+                <label className="details">First name</label>
                 <br />
                 <input
-                  type='text'
-                  name='firstName'
+                  type="text"
+                  name="firstName"
                   defaultValue={nextUser.firstName}
                 />
               </div>
 
               <div>
-                <label className='details'>Last name</label>
+                <label className="details">Last name</label>
                 <br />
                 <input
-                  type='text'
-                  name='lastName'
+                  type="text"
+                  name="lastName"
                   defaultValue={nextUser.lastName}
                 />
               </div>
 
               <div>
-                <label className='details'>Birthday</label>
+                <label className="details">Birthday</label>
                 <br />
                 <input
-                  type='date'
-                  name='birthday'
+                  type="date"
+                  name="birthday"
                   defaultValue={nextUser.birthday.split("T")[0]}
                   required
                 />
               </div>
 
               <div>
-                <label className='details'>Phone number</label>
+                <label className="details">Phone number</label>
                 <br />
                 <input
-                  type='text'
-                  name='phoneNumber'
+                  type="text"
+                  name="phoneNumber"
                   defaultValue={nextUser.phoneNumber}
                 />
               </div>
 
               <div>
-                <label className='details'>Email</label>
+                <label className="details">Email</label>
                 <br />
                 <input
-                  type='email'
-                  name='email'
+                  type="email"
+                  name="email"
                   defaultValue={nextUser.email}
                 />
               </div>
@@ -188,41 +192,41 @@ export default function EditProfile(props) {
 
             <div className={styles.address}>
               <div>
-                <label className='details'>Street</label>
+                <label className="details">Street</label>
                 <br />
                 <input
-                  type='text'
-                  name='street'
+                  type="text"
+                  name="street"
                   defaultValue={nextUser.address.street}
                 />
               </div>
 
               <div>
-                <label className='details'>Number</label>
+                <label className="details">Number</label>
                 <br />
                 <input
-                  type='text'
-                  name='number'
+                  type="text"
+                  name="number"
                   defaultValue={nextUser.address.number}
                 />
               </div>
 
               <div>
-                <label className='details'>City</label>
+                <label className="details">City</label>
                 <br />
                 <input
-                  type='text'
-                  name='city'
+                  type="text"
+                  name="city"
                   defaultValue={nextUser.address.city}
                 />
               </div>
 
               <div>
-                <label className='details'>Post code</label>
+                <label className="details">Post code</label>
                 <br />
                 <input
-                  type='number'
-                  name='postcode'
+                  type="number"
+                  name="postcode"
                   defaultValue={nextUser.address.postcode}
                 />
               </div>
@@ -230,17 +234,18 @@ export default function EditProfile(props) {
               <br />
               <div className={styles.editBtns}>
                 <Link to={user.role == "Manager" ? "/mpage" : "/tpage"}>
-                  <button className='cancel'>Cancel</button>
+                  <button className="cancel">Cancel</button>
                 </Link>
-                <button type='submit' value='Register' className='att'>
+                <button type="submit" value="Register" className="att">
                   Submit
                 </button>
                 {!showPasswordForm && !showSuccess && (
                   <button
-                    type='submit'
-                    value='Register'
-                    className='att'
-                    onClick={() => setShowPasswordForm(true)}>
+                    type="submit"
+                    value="Register"
+                    className="att"
+                    onClick={() => setShowPasswordForm(true)}
+                  >
                     Change Password
                   </button>
                 )}

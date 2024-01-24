@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ManagerRegister from "./ManagerRegister";
@@ -23,92 +21,93 @@ export default function KgRegister() {
           onSubmit={(e) => {
             saveKgForm(e);
           }}
-          name='kgForm'>
-          <div className='reg'>Register Kindergarten!</div>
+          name="kgForm"
+        >
+          <div className="reg">Register Kindergarten!</div>
 
-          <div className='regBox'>
+          <div className="regBox">
             <div>
-              <div className='inputBox'>
-                <label className='details'>Kindergarten name</label>
+              <div className="inputBox">
+                <label className="details">Kindergarten name</label>
                 <br />
                 <input
-                  type='text'
-                  name='name'
-                  placeholder='Kindergarten Name'
+                  type="text"
+                  name="name"
+                  placeholder="Kindergarten Name"
                   required
                 />
               </div>
 
-              <div className='inputBox'>
-                <label className='details'>Phone number</label>
+              <div className="inputBox">
+                <label className="details">Phone number</label>
                 <br />
                 <input
-                  type='text'
-                  name='phoneNumber'
-                  placeholder='Phone Number'
+                  type="text"
+                  name="phoneNumber"
+                  placeholder="Phone Number"
                   required
                 />
               </div>
 
-              <div className='inputBox'>
-                <label className='details'>Email</label>
+              <div className="inputBox">
+                <label className="details">Email</label>
                 <br />
                 <input
-                  type='email'
-                  name='email'
-                  placeholder='E-mail'
+                  type="email"
+                  name="email"
+                  placeholder="E-mail"
                   required
                 />
               </div>
 
-              <div className='inputBox'>
-                <label className='details'>Street</label>
+              <div className="inputBox">
+                <label className="details">Street</label>
                 <br />
                 <input
-                  type='text'
-                  name='street'
-                  placeholder='Street'
+                  type="text"
+                  name="street"
+                  placeholder="Street"
                   required
                 />
               </div>
             </div>
 
-            <div className='smallBox'>
-              <div className='inputBox'>
-                <label className='details'>Number</label>
+            <div className="smallBox">
+              <div className="inputBox">
+                <label className="details">Number</label>
                 <br />
                 <input
-                  type='text'
-                  name='number'
-                  placeholder='Number'
+                  type="text"
+                  name="number"
+                  placeholder="Number"
                   required
                 />
               </div>
 
-              <div className='inputBox'>
-                <label className='details'>City</label>
+              <div className="inputBox">
+                <label className="details">City</label>
                 <br />
-                <input type='text' name='city' placeholder='City' required />
+                <input type="text" name="city" placeholder="City" required />
               </div>
 
-              <div className='inputBox'>
-                <label className='details'>Post code</label>
+              <div className="inputBox">
+                <label className="details">Post code</label>
                 <br />
                 <input
-                  type='number'
-                  name='postcode'
+                  type="number"
+                  name="postcode"
                   required
-                  placeholder='Postcode'
+                  placeholder="Postcode"
                 />
               </div>
 
               <br />
               <div className={styles.btnContainer}>
-                <button type='submit' value='Next' className='next'>
+                <button type="submit" value="Next" className="next">
                   Next
                 </button>
-                <Link to='/'>
-                  <button className='cancel'>Cancel</button>
+                <Link to="/">
+                  <button className="cancel">Cancel</button>
                 </Link>
               </div>
             </div>

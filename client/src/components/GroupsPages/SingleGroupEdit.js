@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
@@ -79,8 +77,9 @@ export default function SingleGroupEdit(props) {
       <form
         className={styles.addcontainer}
         onSubmit={handleEdit}
-        name='managerForm'
-        key='group._id'>
+        name="managerForm"
+        key="group._id"
+      >
         <div className={styles.title}>
           <h3>Edit Group!</h3>
         </div>
@@ -88,8 +87,8 @@ export default function SingleGroupEdit(props) {
           <label>Group Name</label>
           <br />
           <input
-            type='text'
-            name='groupName'
+            type="text"
+            name="groupName"
             placeholder={group.groupName}
             onChange={editedValue}
           />
@@ -98,18 +97,18 @@ export default function SingleGroupEdit(props) {
           <label>Room</label>
           <br />
           <input
-            type='text'
-            name='room'
+            type="text"
+            name="room"
             placeholder={group.room}
             onChange={editedValue}
           />
         </div>
         <div className={styles.addinfo}>
-          <label className='details'>Age Group</label>
+          <label className="details">Age Group</label>
           <br />
           <input
-            type='text'
-            name='ageGroup'
+            type="text"
+            name="ageGroup"
             placeholder={group.ageGroup}
             onChange={editedValue}
           />
@@ -118,44 +117,47 @@ export default function SingleGroupEdit(props) {
           <label>Description</label>
           <br />
           <input
-            type='text'
-            name='description'
+            type="text"
+            name="description"
             placeholder={group.description}
             onChange={editedValue}
           />
         </div>
         <br />
         <div className={styles.btn}>
-          <Link to='/groups'>
-            <button className='cancel'>Cancel</button>
+          <Link to="/groups">
+            <button className="cancel">Cancel</button>
           </Link>
           <button
-            type='submit'
-            value='Edit'
-            className='att'
+            type="submit"
+            value="Edit"
+            className="att"
             onClick={() =>
               handleMessage(true, "Thank you! The group was updated.")
-            }>
+            }
+          >
             Submit
           </button>
           {message.status && (
             <p
               className={!message.status.ok ? "errorMsg" : ""}
-              style={{ fontSize: "0.65rem" }}>
+              style={{ fontSize: "0.65rem" }}
+            >
               {message.status.msg}
             </p>
           )}
         </div>
       </form>
       <button
-        type='submit'
-        value='delete'
-        className='next'
+        type="submit"
+        value="delete"
+        className="next"
         style={{
           width: "5rem",
           margin: "0 auto",
         }}
-        onClick={() => handleDelete(group._id)}>
+        onClick={() => handleDelete(group._id)}
+      >
         Delete
       </button>
     </div>

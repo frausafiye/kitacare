@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState, useEffect, useContext } from "react";
 import styles from "./ChildStyle/ChildRegister.module.scss";
 import { sendData, submitForm } from "../../logic/registerLogic";
@@ -62,8 +60,9 @@ export default function ChildRegister(props) {
     <div className={styles.formContainter}>
       <form
         onSubmit={(e) => submitChildForm(e)}
-        name='childForm'
-        className={styles.childForm}>
+        name="childForm"
+        className={styles.childForm}
+      >
         <div className={styles.childFormContainerInner}>
           <div className={styles.childFormInner}>
             <div className={styles.regInfo}>
@@ -73,9 +72,9 @@ export default function ChildRegister(props) {
             <div className={styles.inputBox}>
               <label className={styles.details}>First name</label> <br />
               <input
-                type='text'
-                name='firstName'
-                placeholder='First Name'
+                type="text"
+                name="firstName"
+                placeholder="First Name"
                 required
               />
             </div>
@@ -83,9 +82,9 @@ export default function ChildRegister(props) {
             <div className={styles.inputBox}>
               <label className={styles.details}>Last name</label> <br />
               <input
-                type='text'
-                name='lastName'
-                placeholder='Last Name'
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
                 required
               />
             </div>
@@ -93,16 +92,16 @@ export default function ChildRegister(props) {
             <div className={styles.inputBox}>
               <label className={styles.details}>Birthday</label> <br />
               <input
-                type='date'
-                name='birthday'
-                placeholder='Birthday'
+                type="date"
+                name="birthday"
+                placeholder="Birthday"
                 required
               />
             </div>
 
             <div className={styles.inputBox}>
               <label className={styles.details}>Profile Image</label> <br />
-              <input type='' name='img' placeholder='img' />
+              <input type="" name="img" placeholder="img" />
             </div>
 
             <div className={styles.regInfo}>
@@ -112,29 +111,29 @@ export default function ChildRegister(props) {
             <div className={styles.inputBox}>
               <label className={styles.details}>Street</label>
               <br />
-              <input type='text' name='street' placeholder='Street' required />
+              <input type="text" name="street" placeholder="Street" required />
             </div>
 
             <div className={styles.inputBox}>
               <label className={styles.details}>Number</label>
               <br />
-              <input type='text' name='number' placeholder='Number' required />
+              <input type="text" name="number" placeholder="Number" required />
             </div>
 
             <div className={styles.inputBox}>
               <label className={styles.details}>City</label>
               <br />
-              <input type='text' name='city' placeholder='City' required />
+              <input type="text" name="city" placeholder="City" required />
             </div>
 
             <div className={styles.inputBox}>
               <label className={styles.details}>Post code</label>
               <br />
               <input
-                type='number'
-                name='postcode'
+                type="number"
+                name="postcode"
                 required
-                placeholder='Postcode'
+                placeholder="Postcode"
               />
             </div>
           </div>
@@ -147,7 +146,7 @@ export default function ChildRegister(props) {
               {categories.map((c, i) => (
                 <li key={i}>
                   <input
-                    type='checkbox'
+                    type="checkbox"
                     className={styles.checkBox}
                     name={c.name}
                   />
@@ -162,9 +161,9 @@ export default function ChildRegister(props) {
               </label>{" "}
               <br />
               <input
-                type='text'
-                name='dietaryNeeds'
-                placeholder='Other allergies or dietary requirements'
+                type="text"
+                name="dietaryNeeds"
+                placeholder="Other allergies or dietary requirements"
               />
             </div>
           </div>
@@ -177,9 +176,9 @@ export default function ChildRegister(props) {
             <div className={styles.emerInput}>
               <label className={styles.details}>Full Name</label> <br />
               <input
-                type='text'
-                name='emerName1'
-                placeholder='Full Name'
+                type="text"
+                name="emerName1"
+                placeholder="Full Name"
                 required
               />
             </div>
@@ -188,9 +187,9 @@ export default function ChildRegister(props) {
               <label className={styles.details}>Email</label>
               <br />
               <input
-                type='email'
-                name='emerEmail1'
-                placeholder='E-mail'
+                type="email"
+                name="emerEmail1"
+                placeholder="E-mail"
                 required
               />
             </div>
@@ -199,9 +198,9 @@ export default function ChildRegister(props) {
               <label className={styles.details}>Number</label>
               <br />
               <input
-                type='text'
-                name='emerNumber1'
-                placeholder='Number'
+                type="text"
+                name="emerNumber1"
+                placeholder="Number"
                 required
               />
             </div>
@@ -213,9 +212,9 @@ export default function ChildRegister(props) {
             <div className={styles.emerInput}>
               <label className={styles.details}>Full Name</label> <br />
               <input
-                type='text'
-                name='emerName2'
-                placeholder='Full Name'
+                type="text"
+                name="emerName2"
+                placeholder="Full Name"
                 required
               />
             </div>
@@ -224,9 +223,9 @@ export default function ChildRegister(props) {
               <label className={styles.details}>Email</label>
               <br />
               <input
-                type='email'
-                name='emerEmail2'
-                placeholder='E-mail'
+                type="email"
+                name="emerEmail2"
+                placeholder="E-mail"
                 required
               />
             </div>
@@ -235,9 +234,9 @@ export default function ChildRegister(props) {
               <label className={styles.details}>Number</label>
               <br />
               <input
-                type='text'
-                name='emerNumber2'
-                placeholder='Number'
+                type="text"
+                name="emerNumber2"
+                placeholder="Number"
                 required
               />
             </div>
@@ -245,7 +244,7 @@ export default function ChildRegister(props) {
             <div className={styles.submitButtons}>
               {/* <Link to='/'><button className="cancel">Cancel</button></Link>
                     <Link to='cregister_health'><button type='submit' value='Next' className='next'>Next</button></Link> */}
-              <button type='submit' value='Register' className={styles.att}>
+              <button type="submit" value="Register" className={styles.att}>
                 Submit
               </button>
             </div>

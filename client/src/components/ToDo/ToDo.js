@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useEffect, useState, useContext } from "react";
 import ToDosContainer from "./ToDosContainer";
 import ToDonesContainer from "./ToDonesContainer";
@@ -107,7 +105,7 @@ export default function Todo() {
   };
 
   return (
-    <div className='app'>
+    <div className="app">
       <ToDosContainer
         toDos={toDos}
         addItem={addItem}

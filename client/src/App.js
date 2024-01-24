@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -40,31 +38,31 @@ import SuccessPage from "./components/Children/SuccessPage";
 function App() {
   return (
     <Container>
-      <div className='App'>
+      <div className="App">
         <Navbar />
         <Switch>
-          <Route exact path='/'>
+          <Route exact path="/">
             <Home />
           </Route>
-          <Route exact path='/register' component={Register} />
-          <Route path='/kgregister' component={KgRegister} />
-          <Route path='/mregister' component={ManagerRegister} />
-          <Route path='/tregister' component={TeacherRegister} />
-          <Route path='/cregister' component={ChildRegister} />
-          <Route path='/editchild' component={ChildEdit} />
-          <Route path='/login' component={Login} />
-          <Route path='/mpage' component={Mpage} />
-          <Route path='/teachers' component={Teachers} />
-          <Route path='/tpage' component={Tpage} />
-          <Route path='/attendance' component={Attendance} />
-          <Route path='/calendar' component={Calendar} />
-          <Route path='/groups' component={AllGroups} />
-          <Route path='/editgroup' component={SingleGroupEdit} />
-          <Route path='/group' component={SingleGroup} />
-          <Route path='/children' component={AllChildren} />
-          <Route path='/addgroup' component={AddGroup} />
-          <Route path='/editprofile' component={EditProfile} />
-          <Route path='/success' component={SuccessPage} />
+          <Route exact path="/register" component={Register} />
+          <Route path="/kgregister" component={KgRegister} />
+          <Route path="/mregister" component={ManagerRegister} />
+          <Route path="/tregister" component={TeacherRegister} />
+          <Route path="/cregister" component={ChildRegister} />
+          <Route path="/editchild" component={ChildEdit} />
+          <Route path="/login" component={Login} />
+          <Route path="/mpage" component={Mpage} />
+          <Route path="/teachers" component={Teachers} />
+          <Route path="/tpage" component={Tpage} />
+          <Route path="/attendance" component={Attendance} />
+          <Route path="/calendar" component={Calendar} />
+          <Route path="/groups" component={AllGroups} />
+          <Route path="/editgroup" component={SingleGroupEdit} />
+          <Route path="/group" component={SingleGroup} />
+          <Route path="/children" component={AllChildren} />
+          <Route path="/addgroup" component={AddGroup} />
+          <Route path="/editprofile" component={EditProfile} />
+          <Route path="/success" component={SuccessPage} />
           <Route component={NotFound} />
         </Switch>
         <Footer />

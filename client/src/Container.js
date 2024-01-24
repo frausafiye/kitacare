@@ -1,5 +1,3 @@
-/** @format */
-
 import { useState, useEffect, createContext } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
@@ -58,7 +56,8 @@ export default function Container(props) {
         kg,
         setKg,
         reset,
-      }}>
+      }}
+    >
       {props.children}
     </MyContext.Provider>
   );

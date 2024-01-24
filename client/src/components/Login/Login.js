@@ -1,5 +1,3 @@
-/** @format */
-
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.scss";
@@ -58,16 +56,16 @@ export default function Login(props) {
   return (
     <div className={styles.fcontainer}>
       <form className={styles.loginContainer} onSubmit={submitForm}>
-        <div className='reg'>Login to Account!</div>
+        <div className="reg">Login to Account!</div>
 
         <div className={styles.loginBox}>
-          <div className='inputBox'>
-            <label className='details'>E-mail</label>
+          <div className="inputBox">
+            <label className="details">E-mail</label>
             <br />
             <input
-              type='email'
-              name='email'
-              placeholder='E-mail'
+              type="email"
+              name="email"
+              placeholder="E-mail"
               value={formData.email}
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
@@ -75,13 +73,13 @@ export default function Login(props) {
             />
           </div>
 
-          <div className='inputBox'>
-            <label className='details'>Password</label>
+          <div className="inputBox">
+            <label className="details">Password</label>
             <br />
             <input
-              type='password'
-              name='password'
-              placeholder='Password'
+              type="password"
+              name="password"
+              placeholder="Password"
               value={formData.password}
               onChange={(e) =>
                 setFormData({ ...formData, password: e.target.value })
@@ -90,18 +88,27 @@ export default function Login(props) {
           </div>
           <br />
           <div className={styles.btnContainer}>
-            <button type='submit' value='Login' className='next'>
+            <button type="submit" value="Login" className="next">
               Login
             </button>
-            <Link to='/'>
-              <button className='cancel'>Cancel</button>
+            <Link to="/">
+              <button className="cancel">Cancel</button>
             </Link>
           </div>
           <div className={styles.btnContainer}>
-              <button type='submit' value='Try it' className='att' id="explore" onClick={async()=>{
-                console.log(process.env.EXPLORE_ACCOUNT_EMAIL)
-                await setFormData({email:process.env.REACT_APP_EXPLORE_ACCOUNT_EMAIL,password: process.env.REACT_APP_EXPLORE_ACCOUNT_PASSWORD})
-              }}>
+            <button
+              type="submit"
+              value="Try it"
+              className="att"
+              id="explore"
+              onClick={() => {
+                console.log(process.env.REACT_APP_EXPLORE_ACCOUNT_EMAIL);
+                setFormData({
+                  email: process.env.REACT_APP_EXPLORE_ACCOUNT_EMAIL,
+                  password: process.env.REACT_APP_EXPLORE_ACCOUNT_PASSWORD,
+                });
+              }}
+            >
               Just explore it
             </button>
           </div>

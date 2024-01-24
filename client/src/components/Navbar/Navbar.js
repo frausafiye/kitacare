@@ -1,5 +1,3 @@
-/** @format */
-
 import { NavLink } from "react-router-dom";
 import { Link, useHistory } from "react-router-dom";
 import logo from "../../images/logo.svg";
@@ -22,29 +20,29 @@ export default function Navbar() {
   return (
     <div className={styles.nav}>
       <div className={styles.lg}>
-        <NavLink to='/'>
-          <img className={styles.logo} src={logo} alt='lg' />
+        <NavLink to="/">
+          <img className={styles.logo} src={logo} alt="lg" />
         </NavLink>
         <div className={styles.kita}>Kitacare</div>
       </div>
       {isLogin ? (
         <div className={styles.navbtn}>
-          <Link to='/login'>
-            <button className='submit'>My Profile</button>
+          <Link to="/login">
+            <button className="submit">My Profile</button>
           </Link>
           <div className={styles.navbtn}>
-            <button onClick={logoutHandle} className='login'>
+            <button onClick={logoutHandle} className="login">
               Logout
             </button>
           </div>
         </div>
       ) : (
         <div className={styles.navbtn}>
-          <Link to='/register'>
-            <button className='submit'>Register</button>
+          <Link to="/register">
+            <button className="submit">Register</button>
           </Link>
-          <Link to='/login'>
-            <button className='login'>Login</button>
+          <Link to="/login">
+            <button className="login">Login</button>
           </Link>
         </div>
       )}

@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { MyContext } from "../../Container";
@@ -84,7 +82,7 @@ export default function Child(props) {
   return (
     <div className={styles.scontainer} key={child._id}>
       <div className={styles.kidimg}>
-        <img src={randImg} className={styles.kid} alt='profileImg' />
+        <img src={randImg} className={styles.kid} alt="profileImg" />
       </div>
       <div className={styles.col1}>
         <p className={styles.bold2}>
@@ -137,18 +135,20 @@ export default function Child(props) {
         {user.role === "Manager" && (
           <button
             // type='submit'
-            value='edit'
-            className='fixedit'
-            onClick={() => props.handleEdit(child)}>
+            value="edit"
+            className="fixedit"
+            onClick={() => props.handleEdit(child)}
+          >
             Edit
           </button>
         )}
         {user.role === "Manager" && (
           <button
             // type='submit'
-            value='edit'
-            className='add'
-            onClick={() => handleEditGroup()}>
+            value="edit"
+            className="add"
+            onClick={() => handleEditGroup()}
+          >
             Edit Group
           </button>
         )}
@@ -163,7 +163,8 @@ export default function Child(props) {
                 flexFlow: "row wrap",
                 justifyContent: "space-between",
                 color: "black",
-              }}>
+              }}
+            >
               {groups.map((group) => {
                 return (
                   <label key={group.groupName} htmlFor={group.groupName}>
@@ -173,9 +174,9 @@ export default function Child(props) {
                         width: "20px",
                         height: "20px",
                       }}
-                      type='radio'
+                      type="radio"
                       id={group.groupName}
-                      name='group'
+                      name="group"
                       value={group.groupName}
                       onClick={() => setSelectedGroup(group._id)}
                     />
@@ -183,17 +184,17 @@ export default function Child(props) {
                   </label>
                 );
               })}
-              <label key='none' htmlFor='none' style={{ flexDirection: "row" }}>
+              <label key="none" htmlFor="none" style={{ flexDirection: "row" }}>
                 <input
                   style={{
                     display: "inline",
                     width: "20px",
                     height: "20px",
                   }}
-                  type='radio'
-                  id='none'
-                  name='group'
-                  value='none'
+                  type="radio"
+                  id="none"
+                  name="group"
+                  value="none"
                   onClick={() => setSelectedGroup("empty")}
                 />
                 none
@@ -201,7 +202,8 @@ export default function Child(props) {
               <button
                 onClick={() => changeGroup(child._id)}
                 disabled={selectedGroup ? false : true}
-                className='add'>
+                className="add"
+              >
                 save
               </button>
             </div>

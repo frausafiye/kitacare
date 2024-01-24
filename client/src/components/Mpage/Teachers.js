@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useState, useEffect, useContext } from "react";
 import { MyContext } from "../../Container";
 import axios from "axios";
@@ -80,7 +78,7 @@ export default function Teachers() {
   return (
     <div>
       <div className={styles.btn}>
-        <button className='next' onClick={generateCodeHandler}>
+        <button className="next" onClick={generateCodeHandler}>
           Generate Code
         </button>
         {verificationCode && <p>VerificationCode: {verificationCode}</p>}
