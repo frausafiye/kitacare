@@ -2,9 +2,16 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 export const FooterContainer = styled.footer`
+<<<<<<< HEAD
   margin-top: auto !important;
   background-color: #0d0909;
   border-radius: 5px;
+=======
+  background-color: #0d0909;
+  border-radius: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+>>>>>>> 558b1bc1f5858c933ff60bb932737d06acd3e726
   margin-top: 5rem;
   padding: 0.5rem;
 `;

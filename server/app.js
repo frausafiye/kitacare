@@ -4,16 +4,18 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const path = require("path");
+const multer = require("multer");
 //routes:
 const userRoutes = require("./routes/userRoutes");
 const kgRoutes = require("./routes/kgRoutes");
 const childRoutes = require("./routes/childRoutes");
 const groupRoutes = require("./routes/groupRoutes");
 const calendarRoutes = require("./routes/calendarRoutes");
+const imageRoutes = require("./routes/imageRoutes");
 const app = express();
 
 //middlewares:
-app.use(cors({ credentials: true, origin: process.env.BASE_URL }));
+//app.use(cors({ credentials: true, origin: process.env.BASE_URL }));
 app.use(express.json());
 app.use(cookieParser());
 require("dotenv").config();
@@ -40,6 +42,7 @@ app.use("/kg", kgRoutes);
 app.use("/child", childRoutes);
 app.use("/groups", groupRoutes);
 app.use("/calendar", calendarRoutes);
+app.use("/profile", imageRoutes);
 
 app.use(express.static(path.join(__dirname, "client/build")));
 app.get("*", (req, res) => {

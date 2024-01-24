@@ -21,5 +21,4 @@ router.post("/postNewEvent", auth, postNewEvent);
 router.put("/putUpdateEvent", auth, putUpdateEvent);
 router.delete("/deleteSingleEvent/:id", auth, deleteSingleEvent);
 
-/* DEFAULT EXPORT */
 module.exports = router;

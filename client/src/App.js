@@ -2,38 +2,38 @@ import React from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 // Basics
-import Home from "./components/Home/Home";
+import Home from "./pages/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/index";
 import "./globalCSS/app.scss";
 
 // Login & Error
-import Login from "./components/Login/Login";
-import NotFound from "./components/NotFound";
+import Login from "./pages/Login/Login";
+import NotFound from "./pages/NotFound";
 
 // Registration
-import Register from "./components/RegisterForms/Register";
-import KgRegister from "./components/RegisterForms/KgRegister";
-import TeacherRegister from "./components/RegisterForms/TeacherRegister";
-import ManagerRegister from "./components/RegisterForms/ManagerRegister";
-import ChildRegister from "./components/RegisterForms/ChildRegister";
+import Register from "./pages/RegisterForms/Register";
+import KgRegister from "./pages/RegisterForms/KgRegister";
+import TeacherRegister from "./pages/RegisterForms/TeacherRegister";
+import ManagerRegister from "./pages/RegisterForms/ManagerRegister";
+import ChildRegister from "./pages/RegisterForms/ChildRegister";
 
 // Dashboard
-import EditProfile from "./components/Mpage/EditProfile";
-import Tpage from "./components/Tpage/Tpage";
-import Mpage from "./components/Mpage/Mpage";
-import Teachers from "./components/Mpage/Teachers";
-import Calendar from "./components/Calendar/Calendar";
+import EditProfile from "./pages/EditProfile/EditProfile";
+import TeacherDashboard from "./pages/Dashboards/TeacherDashboard/TeacherDashboard";
+import ManagerDashboard from "./pages/Dashboards/ManagerDashboard/ManagerDashboard";
+import Teachers from "./pages/Teachers/Teachers";
+import Calendar from "./components/Cards/appCards/Calendar/Calendar";
 import Container from "./Container";
 
-import Attendance from "./components/Tpage/Attendance/Attendance";
-import AllGroups from "./components/GroupsPages/AllGroups";
-import SingleGroupEdit from "./components/GroupsPages/SingleGroupEdit";
-import SingleGroup from "./components/GroupsPages/SingleGroup";
-import AllChildren from "./components/Children/AllChildren";
-import AddGroup from "./components/GroupsPages/AddGroup";
-import ChildEdit from "./components/Children/ChildEdit";
-import SuccessPage from "./components/Children/SuccessPage";
+import Attendance from "./pages/Attendance/Attendance";
+import AllGroups from "./pages/GroupsPages/AllGroups";
+import SingleGroupEdit from "./pages/GroupsPages/SingleGroupEdit";
+import SingleGroup from "./pages/GroupsPages/SingleGroup";
+import AllChildren from "./pages/Children/AllChildren";
+import AddGroup from "./pages/GroupsPages/AddGroup";
+import ChildEdit from "./pages/Children/ChildEdit";
+import SuccessPage from "./pages/Children/SuccessPage";
 
 function App() {
   return (
@@ -51,9 +51,11 @@ function App() {
           <Route path="/cregister" component={ChildRegister} />
           <Route path="/editchild" component={ChildEdit} />
           <Route path="/login" component={Login} />
-          <Route path="/mpage" component={Mpage} />
+          {/* <Route path="/mpage" component={Mpage} /> */}
+          {/* <Route path="/tpage" component={Tpage} /> */}
+          <Route path="/mpage" component={ManagerDashboard} />
           <Route path="/teachers" component={Teachers} />
-          <Route path="/tpage" component={Tpage} />
+          <Route path="/tpage" component={TeacherDashboard} />
           <Route path="/attendance" component={Attendance} />
           <Route path="/calendar" component={Calendar} />
           <Route path="/groups" component={AllGroups} />
